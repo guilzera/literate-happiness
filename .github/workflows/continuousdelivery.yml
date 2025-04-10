@@ -1,0 +1,33 @@
+name: Continuous Deployment - Gerar ZIP
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.201'
+
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      - name: Publicar aplicação
+        run: dotnet publish -c Release -o ./build
+
+      - name: Compactar em .zip
+        run: zip -r app.zip ./build
+
+      - name: Upload do .zip como artefato
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-zip
+          path: app.zip
