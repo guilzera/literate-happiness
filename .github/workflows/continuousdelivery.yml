@@ -27,7 +27,7 @@ jobs:
         run: zip -r app.zip ./build
 
       - name: Upload do .zip como artefato
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-zip
           path: app.zip
