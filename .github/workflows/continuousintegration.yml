@@ -1,0 +1,26 @@
+name: Verificação de Formatação
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Instalar .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.201' # ou a versão que você estiver usando
+
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      - name: Verificar formatação com dotnet format
+        run: dotnet format --verify-no-changes --severity error
