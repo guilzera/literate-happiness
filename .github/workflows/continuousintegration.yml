@@ -31,5 +31,5 @@ jobs:
     - name: Discord Webhook Action
       uses: tsickert/discord-webhook@v7.0.0
       with:
-        webhook-url: ${{ secrets.DISCORD_WEBHOOK_ }}
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
         content: "Test"
