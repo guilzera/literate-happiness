@@ -1,13 +1,12 @@
-on:
-  schedule:
-    - cron:  '0 12 * * *'
+name: Send Discord Notification
+on: push
 
 jobs:
-  message:
+  notify:
     runs-on: ubuntu-latest
     steps:
-    - name: Discord Webhook Action
-      uses: tsickert/discord-webhook@v7.0.0
-      with:
-        webhook-url: ${{ secrets.WEBHOOK_URL }}
-        content: "Test"
+      - name: Send Discord Message
+        uses: sarge841/action-discord-webhook@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: 'A new commit by ${{ github.actor }}!'
