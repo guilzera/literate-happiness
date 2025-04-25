@@ -25,12 +25,11 @@ jobs:
       - name: Verificar formatação com dotnet format
         run: dotnet format --verify-no-changes --severity error
 
-  discord:
+  message:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Run Discord Webhook
-        uses: johnnyhuy/actions-discord-git-webhook@main
-        with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v7.0.0
+      with:
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK_ }}
+        content: "Test"
