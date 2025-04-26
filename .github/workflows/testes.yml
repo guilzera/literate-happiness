@@ -1,0 +1,30 @@
+name: Executar Testes da Calculadora
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar o repositório
+      uses: actions/checkout@v4
+
+    - name: Instalar o .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.201'
+
+    - name: Restaurar dependências
+      run: dotnet restore
+
+    - name: Buildar solução
+      run: dotnet build --no-restore
+
+    - name: Executar testes
+      run: dotnet test --no-build --verbosity normal

@@ -8,4 +8,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include=".github - Cópia\workflows\continuousdelivery.yml" />
+    <None Include=".github - Cópia\workflows\continuousintegration.yml" />
+    <None Include=".github - Cópia\workflows\discord.yml" />
+    <None Include=".github - Cópia\workflows\testes.yml" />
+  </ItemGroup>
+
 </Project>
